@@ -30,6 +30,7 @@ public class GameServiceTests {
   private TranslationRepository translationRepository;
   private GameRepository gameRepository;
   private QuestionRepository questionRepository;
+  private UserStatisticsRepository userStatisticsRepository;
   private Jedis jedis;
 
   @BeforeEach
@@ -40,8 +41,10 @@ public class GameServiceTests {
     gameRepository = mock(GameRepository.class);
     jedis = mock(Jedis.class);
     gameConfigurationRepository = mock(GameConfigurationRepository.class);
+    userStatisticsRepository = mock(UserStatisticsRepository.class);
     gameService = new GameService(gameConfigurationRepository, translationService,
-      translationRepository, gameRepository, questionRepository, jedis);
+      translationRepository, gameRepository, questionRepository, userStatisticsRepository,
+      jedis);
   }
 
   @Test

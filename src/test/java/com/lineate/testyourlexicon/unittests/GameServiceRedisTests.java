@@ -1,10 +1,7 @@
 package com.lineate.testyourlexicon.unittests;
 
 import com.lineate.testyourlexicon.config.TestRedisConfiguration;
-import com.lineate.testyourlexicon.repositories.GameConfigurationRepository;
-import com.lineate.testyourlexicon.repositories.GameRepository;
-import com.lineate.testyourlexicon.repositories.QuestionRepository;
-import com.lineate.testyourlexicon.repositories.TranslationRepository;
+import com.lineate.testyourlexicon.repositories.*;
 import com.lineate.testyourlexicon.services.GameService;
 import com.lineate.testyourlexicon.services.TranslationService;
 import org.junit.jupiter.api.Assertions;
@@ -28,6 +25,7 @@ public class GameServiceRedisTests {
   private TranslationRepository translationRepository;
   private GameRepository gameRepository;
   private QuestionRepository questionRepository;
+  private UserStatisticsRepository userStatisticsRepository;
   @Autowired
   private Jedis jedis;
 
@@ -38,8 +36,10 @@ public class GameServiceRedisTests {
     questionRepository = mock(QuestionRepository.class);
     gameRepository = mock(GameRepository.class);
     gameConfigurationRepository = mock(GameConfigurationRepository.class);
+    userStatisticsRepository = mock(UserStatisticsRepository.class);
     gameService = new GameService(gameConfigurationRepository, translationService,
-      translationRepository, gameRepository, questionRepository, jedis);
+      translationRepository, gameRepository, questionRepository, userStatisticsRepository,
+      jedis);
   }
 
   @Test

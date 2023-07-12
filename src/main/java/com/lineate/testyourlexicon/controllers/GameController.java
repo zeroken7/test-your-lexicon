@@ -8,6 +8,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/games")
@@ -54,4 +56,8 @@ public class GameController {
     return gameService.userConfiguration(authenticationService.getUserHash(request));
   }
 
+  @GetMapping("/achievements")
+  public List<AchievementDTO> achievements() {
+    return gameService.getAchievements(authenticationService.getAuthenticatedUser().get());
+  }
 }

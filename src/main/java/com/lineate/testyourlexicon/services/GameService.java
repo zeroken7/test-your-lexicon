@@ -1,9 +1,11 @@
 package com.lineate.testyourlexicon.services;
 
+import com.lineate.testyourlexicon.achievements.AchievementManager;
 import com.lineate.testyourlexicon.dto.*;
 import com.lineate.testyourlexicon.entities.Game;
 import com.lineate.testyourlexicon.entities.GameConfiguration;
 import com.lineate.testyourlexicon.entities.QuestionEntity;
+import com.lineate.testyourlexicon.entities.User;
 import com.lineate.testyourlexicon.exceptions.GeneralMessageException;
 import com.lineate.testyourlexicon.models.Question;
 import com.lineate.testyourlexicon.repositories.*;
@@ -11,6 +13,8 @@ import com.lineate.testyourlexicon.util.GameMapper;
 import com.lineate.testyourlexicon.util.GameUtil;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -189,5 +193,14 @@ public class GameService {
       throw new GeneralMessageException("Game has already finished");
     }
     return game;
+  }
+
+  public List<AchievementDTO> getAchievements(User user) {
+    return user.getAchievements().stream()
+      .map(achievement -> AchievementDTO.builder()
+        .name(achievement.getName())
+        .description(achievement.getDescription())
+        .build())
+      .collect(Collectors.toList());
   }
 }

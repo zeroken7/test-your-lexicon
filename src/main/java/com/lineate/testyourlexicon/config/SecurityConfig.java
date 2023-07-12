@@ -18,6 +18,7 @@ public class SecurityConfig {
         .requestMatchers(HttpMethod.GET,
           "/users").hasAnyRole("ADMIN")
         .requestMatchers("/health").authenticated()
+        .requestMatchers("/games/achievements").authenticated()
         .anyRequest().permitAll())
       .logout(logout -> logout
         .disable())

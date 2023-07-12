@@ -1,0 +1,11 @@
+INSERT INTO achievements(name, description) VALUES
+('Linguistic Beginner', 'Answered 10 questions!'),
+('Language Interpreter', 'Answered 200 questions!'),
+('Translation Maestro', 'Answered 1000 questions!'),
+('Global Ambassador', 'Answered 10000 questions!'),
+('Supreme Polyglot', 'Answered 50000 questions!'),
+('Newbie Player', 'Played 1 game!'),
+('Dedicated Translator', 'Played 25 games!'),
+('Prodigy Gamer', 'Played 500 games!'),
+('Elite Champion', 'Played 2500 games!'),
+('Grandmaster Linguistic', 'Played 10000 games!')

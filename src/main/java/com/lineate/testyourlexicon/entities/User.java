@@ -31,5 +31,15 @@ public class User {
       inverseJoinColumns = @JoinColumn(name = "role_id")
   )
   private Set<Role> roles = new HashSet<>();
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(
+      name = "user_achievements",
+      joinColumns = @JoinColumn(name = "user_id"),
+      inverseJoinColumns = @JoinColumn(name = "achievement_id")
+  )
+  private Set<AchievementEntity> achievements = new HashSet<>();
 
+  public void addAchievement(AchievementEntity achievement) {
+    achievements.add(achievement);
+  }
 }

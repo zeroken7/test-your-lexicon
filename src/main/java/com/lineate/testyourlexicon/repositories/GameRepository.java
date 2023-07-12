@@ -13,4 +13,6 @@ public interface GameRepository extends JpaRepository<Game, Long> {
   public default Optional<Game> getUserActiveGame(Long userHash) {
     return getGameByUserHashAndStepsLeftGreaterThan(userHash, 0);
   }
+
+  int countGameByUserHash(Long userHash);
 }
